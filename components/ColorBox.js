@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const ColorBox = ({ colorName, hexCode }) => {
   const colorStyle = {
@@ -22,5 +22,18 @@ const ColorBox = ({ colorName, hexCode }) => {
   );
 };
 
+const styles = StyleSheet.create({
+  colorContainer: {
+    padding: 10,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  text: {
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+});
 
 export default ColorBox;

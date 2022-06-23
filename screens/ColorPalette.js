@@ -1,8 +1,6 @@
 import React from 'react';
-import { Text, StyleSheet, FlatList, SafeAreaView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { Text, StyleSheet, FlatList } from 'react-native';
 import ColorBox from '../components/ColorBox';
-
 
 const COLORS = [
   { colorName: 'Base03', hexCode: '#002b36' },
@@ -23,40 +21,30 @@ const COLORS = [
   { colorName: 'Green', hexCode: '#859900' },
 ];
 
-const List = () => {
+const ColorPalette = () => {
   return (
-    <NavigationContainer>
-      <SafeAreaView>
-        <FlatList
-          data={COLORS}
-          keyExtractor={item => item.hexCode}
-          renderItem={({ item }) => (
-            <ColorBox colorName={item.colorName} hexCode={item.hexCode} />
-          )}
-          ListHeaderComponent={<Text style={styles.topText}>Solarized </Text>}
-        />
-      </SafeAreaView>
-    </NavigationContainer>
+    <FlatList
+      style={styles.container}
+      data={COLORS}
+      keyExtractor={item => item.hexCode}
+      renderItem={({ item }) => (
+        <ColorBox colorName={item.colorName} hexCode={item.hexCode} />
+      )}
+      ListHeaderComponent={<Text style={styles.topText}>Solarized </Text>}
+    />
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    padding: 11,
+    backgroundColor: 'white',
+  },
   topText: {
     fontWeight: 'bold',
     fontSize: 18,
     marginBottom: 10,
   },
-  colorContainer: {
-    padding: 10,
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  text: {
-    fontWeight: 'bold',
-    color: '#fff',
-  },
 });
 
-export default List;
+export default ColorPalette;
